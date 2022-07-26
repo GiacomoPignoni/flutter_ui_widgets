@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    eol_at_end_of_file: true
+    library_prefixes: false
+    constant_identifier_names: false
