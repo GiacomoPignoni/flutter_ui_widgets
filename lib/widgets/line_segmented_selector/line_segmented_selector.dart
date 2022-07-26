@@ -16,11 +16,22 @@ class LineSegmentedSelectorButton<T> {
 /// It can have N buttons and every buttons will take the same available width.
 /// The height is given
 class LineSegmentedSelector<T> extends StatefulWidget {
+  /// List of the buttons to show
   final List<LineSegmentedSelectorButton<T>> buttons;
+
+  /// Callback when the user tap on a button
   final void Function(T selectedValue) onSelectionChanged;
+
+  /// The stroke width fo the line
   final double strokeWidth;
+
+  /// The height of every buttons
   final double buttonsHeight;
+
+  /// The border radius of the line around the selected button
   final double buttonsBorderRadius;
+
+  /// The selected button. When this value it will be change the widget automatically run the animation.
   final T selectedValue;
 
   const LineSegmentedSelector({
@@ -38,11 +49,13 @@ class LineSegmentedSelector<T> extends StatefulWidget {
 }
 
 class _LineSegmentedSelectorState<T> extends State<LineSegmentedSelector<T>> with SingleTickerProviderStateMixin {
+  /// Main animation that controls all the other smaller animations
   late final _animationController = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 500),
   );
 
+  /// Animation that controls the line around the old selected button
   late final _oldSelectedAnimation = CurvedAnimation(
     parent: _animationController, 
     curve: const Interval(
@@ -51,6 +64,7 @@ class _LineSegmentedSelectorState<T> extends State<LineSegmentedSelector<T>> wit
     ),
   );
 
+  /// Animation that controls the line between the old and the new selected button
   late final _lineAnimation = CurvedAnimation(
     parent: _animationController, 
     curve: const Interval(
@@ -59,6 +73,7 @@ class _LineSegmentedSelectorState<T> extends State<LineSegmentedSelector<T>> wit
     ),
   );
 
+  /// Animation that controls the line around the new selected button
   late final _newSelectedAnimation = CurvedAnimation(
     parent: _animationController, 
     curve: const Interval(
@@ -291,6 +306,9 @@ class _LineSegmentedSelectorPainter extends CustomPainter {
     final oldRectMiddle = (singleWidth * oldIndex) + (singleWidth / 2); 
     final newRectMiddle = (singleWidth * newIndex) + ((singleWidth / 2));
 
+    // This is necessary to transform 1 animation into 2 animations like this
+    // |----------|----------|
+    // 0          1          0
     final halfAnimation1 = lineAnimProgress <= 0.5 ? lerpDouble(0, 1, lineAnimProgress / 0.5)! : 1.0;
     final halfAnimation2 = lineAnimProgress > 0.5 ? lerpDouble(1, 0, (lineAnimProgress - 0.5) / 0.5)! : 0.0;
     
