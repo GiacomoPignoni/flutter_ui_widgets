@@ -1,6 +1,8 @@
 # Flutter UI Widgets
 This is a repository with alla the UI Widgets made by me.
+
 Every widgets are indipended, they not require external packages.
+
 You can try them by cloning this repository and running the Flutter app on every device you want(iPhone, Android, MacOS, Windows, Linux and Web).
 
 | Name | Description |
