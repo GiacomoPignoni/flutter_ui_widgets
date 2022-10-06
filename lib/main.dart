@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter UI Widgets',
+      title: 'Flutter UI Widgets - Giacomo Pignoni',
       theme: theme,
       routes: routes,
       initialRoute: HomeScreen.path,

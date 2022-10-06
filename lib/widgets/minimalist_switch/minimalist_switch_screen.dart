@@ -11,22 +11,29 @@ class MinimalistSwitchScreen extends StatefulWidget {
 }
 
 class _MinimalistSwitchScreenState extends State<MinimalistSwitchScreen> {
-  bool value = false;
+  final _currentValue = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("MinimalistSwitch"),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
-          child: MinimalistSwitch(
-            checked: value,
-            onCheckedChange: (newValue) {
-              setState(() {
-                value = newValue;
-              });
-            },
+          child: ValueListenableBuilder<bool>(
+            valueListenable: _currentValue,
+            builder: (context, currentValue, child) {
+              return MinimalistSwitch(
+                checked: currentValue,
+                onCheckedChange: (newValue) {
+                  setState(() {
+                    _currentValue.value = newValue;
+                  });
+                },
+              );
+            }
           )
         ),
       )

@@ -1,39 +1,38 @@
 import 'package:flutter/material.dart';
 
 const paperWhite = Color(0xFFF9FBFF); 
-const lightBlack = Color(0xFF5F6368);
-const pencilBlue = Color(0xFF5C6274);
+const pencilBlack = Color(0xFF5F6368);
 const lightGrey = Color(0xFFC4C4C4);
 
 final theme = ThemeData(
-  fontFamily: "Montserrat",
+  fontFamily: "Poppins",
   scaffoldBackgroundColor: paperWhite,
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
-    primary: lightBlack,
+    primary: pencilBlack,
     onPrimary: paperWhite,
     secondary: lightGrey,
-    onSecondary: lightBlack,
+    onSecondary: pencilBlack,
     error: Colors.red,
     onError: Colors.white,
     background: paperWhite,
-    onBackground: lightBlack,
+    onBackground: pencilBlack,
     surface: paperWhite,
-    onSurface: lightBlack, 
+    onSurface: pencilBlack, 
   ),
   textTheme: const TextTheme(
     bodyText1: TextStyle(
-      color: lightBlack,
+      color: pencilBlack,
       fontSize: 16
     ),
     headline3: TextStyle(
-      color: lightBlack,
-      fontWeight: FontWeight.bold,
+      color: pencilBlack,
+      fontWeight: FontWeight.w500,
       fontSize: 18
     ),
   ),
   iconTheme: const IconThemeData(
-    color: lightBlack,
+    color: pencilBlack,
     size: 20,
     opacity: 1,
   ),
@@ -44,7 +43,13 @@ final theme = ThemeData(
     backgroundColor: paperWhite,
     elevation: 2,
     iconTheme: const IconThemeData(
-      color: lightBlack,
+      color: pencilBlack,
+    ),
+    centerTitle: true,
+    titleTextStyle: const TextStyle(
+      color: pencilBlack,
+      fontSize: 20,
+      fontWeight: FontWeight.w500
     )
   ),
   cardTheme: CardTheme(

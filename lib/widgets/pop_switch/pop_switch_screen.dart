@@ -11,22 +11,29 @@ class PopSwitchScreen extends StatefulWidget {
 }
 
 class _PopSwitchScreenState extends State<PopSwitchScreen> {
-  bool value = false;
+  final _currentValue = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("PopSwitch"),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
-          child: PopSwitch(
-            checked: value,
-            onCheckedChange: (newValue) {
-              setState(() {
-                value = newValue;
-              });
-            },
+          child: ValueListenableBuilder<bool>(
+            valueListenable: _currentValue,
+            builder: (context, currentValue, child) {
+              return PopSwitch(
+                checked: currentValue,
+                onCheckedChange: (newValue) {
+                  setState(() {
+                    _currentValue.value = newValue;
+                  });
+                },
+              );
+            }
           )
         ),
       )
