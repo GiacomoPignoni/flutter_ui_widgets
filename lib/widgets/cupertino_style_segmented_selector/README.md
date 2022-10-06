@@ -1,3 +1,3 @@
 # CupertioStyleSegmentedSelector
 
-A slider like the ios slider but with a cooler animation
+A slider like the ios slider but with a better animation
